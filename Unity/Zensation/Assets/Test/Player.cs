@@ -1,7 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO.Ports;
 
 public class Player : MonoBehaviour {
+	// Arduino
+	SerialPort sp = new SerialPort("COM4", 9600);
+
+	bool arduW = false;
+	bool arduS = false;
+	bool arduD = false;
+	bool arduA = false;
+	bool arduQ = false;
 
 	//Day and Night Cycle
 	public bool cycle = true;
@@ -19,42 +28,60 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		sp.Open();
+		sp.ReadTimeout = 1;
 	}
 
 	// Update is called once per frame
 	void Update () {
 
+		arduW = false;
+		arduS = false;
+		arduD = false;
+		arduA = false;
+
+
+		if(sp.IsOpen)
+		{
+			try
+			{
+				Arduino(sp.ReadByte());
+			}
+			catch
+			{
+
+			}
+		}
+	
 		float movment = 10f * Time.deltaTime;
 
 		Debug.Log (irritationLevel);
 
-		//Movement Keys
+		//Movement keys
 
-		if(Input.GetKey (KeyCode.W) && up == true)
+		if((Input.GetKey (KeyCode.W) || arduW == true) && up == true)
 		{
 			transform.position += new Vector3(0f, movment, 0f);
 		}
-
-		if(Input.GetKey (KeyCode.S) && down == true)
+		
+		if((Input.GetKey (KeyCode.S) || arduS == true) && down == true)
 		{
 			transform.position -= new Vector3(0f, movment, 0f);
 		}
-
-		if(Input.GetKey (KeyCode.A) && left == true)
+		
+		if((Input.GetKey (KeyCode.A) || arduA == true) && left == true)
 		{
 			transform.position -= new Vector3(movment, 0f, 0f);
 		}
-
-		if(Input.GetKey (KeyCode.D) && right == true)
+		
+		if((Input.GetKey (KeyCode.D) || arduD == true) && right == true)
 		{
 			transform.position += new Vector3(movment, 0f, 0f);
 		}
 
-
 		//Switch
 
-		if(Input.GetKeyDown (KeyCode.Q))
+		if(Input.GetKeyDown (KeyCode.Q) || arduQ == true)
 		{
 
 			if(cycle == true)
@@ -75,5 +102,41 @@ public class Player : MonoBehaviour {
 
 	public void IncreaseLevel(){
 		irritationLevel++;
+	}
+
+	void Arduino(int ArduInput)
+	{
+		//Movement
+		
+		if(ArduInput == 1)
+		{
+			arduW = true;
+			Debug.Log("W");
+		}else {
+			arduW = false;
+			Debug.Log("Check");
+		}
+
+		if(ArduInput == 2)
+		{
+			arduS = true;
+			Debug.Log("S");
+		}else {
+			arduS = false;
+		}
+		
+		if(ArduInput == 3)
+		{
+			arduA = true;
+		}else {
+			arduA = false;
+		}
+		
+		if(ArduInput == 4)
+		{
+			arduD = true;
+		}else {
+			arduD = false;
+		}
 	}
 }
