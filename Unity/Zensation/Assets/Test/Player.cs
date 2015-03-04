@@ -8,9 +8,8 @@ public class Player : MonoBehaviour {
 
 	bool arduW = false;
 	bool arduS = false;
-	bool arduD = false;
-	bool arduA = false;
 	bool arduQ = false;
+
 
 	//Day and Night Cycle
 	public bool cycle = true;
@@ -18,8 +17,7 @@ public class Player : MonoBehaviour {
 	public Sprite nightSprite;
 
 	//Movement
-	public bool left = true;
-	public bool right = true;
+
 	public bool up = true;
 	public bool down = true;
 
@@ -30,6 +28,8 @@ public class Player : MonoBehaviour {
 	void Start () {
 		sp.Open();
 		sp.ReadTimeout = 1;
+
+		sp.Write("GameStart");
 	}
 
 	// Update is called once per frame
@@ -37,8 +37,7 @@ public class Player : MonoBehaviour {
 
 		arduW = false;
 		arduS = false;
-		arduD = false;
-		arduA = false;
+
 
 
 		if(sp.IsOpen)
@@ -69,19 +68,11 @@ public class Player : MonoBehaviour {
 			transform.position -= new Vector3(0f, movment, 0f);
 		}
 		
-		if((Input.GetKey (KeyCode.A) || arduA == true) && left == true)
-		{
-			transform.position -= new Vector3(movment, 0f, 0f);
-		}
-		
-		if((Input.GetKey (KeyCode.D) || arduD == true) && right == true)
-		{
-			transform.position += new Vector3(movment, 0f, 0f);
-		}
+
 
 		//Switch
 
-		if(Input.GetKeyDown (KeyCode.Q) || arduQ == true)
+		if(Input.GetKeyDown (KeyCode.Q))
 		{
 
 			if(cycle == true)
@@ -114,7 +105,6 @@ public class Player : MonoBehaviour {
 			Debug.Log("W");
 		}else {
 			arduW = false;
-			Debug.Log("Check");
 		}
 
 		if(ArduInput == 2)
@@ -124,19 +114,17 @@ public class Player : MonoBehaviour {
 		}else {
 			arduS = false;
 		}
-		
+
 		if(ArduInput == 3)
 		{
-			arduA = true;
-		}else {
-			arduA = false;
+			cycle = true;
+			Debug.Log("Q");
 		}
-		
+
 		if(ArduInput == 4)
 		{
-			arduD = true;
-		}else {
-			arduD = false;
+			cycle = false;
+			Debug.Log("Q");
 		}
 	}
 }
