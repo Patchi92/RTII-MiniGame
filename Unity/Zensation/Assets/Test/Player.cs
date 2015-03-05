@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO.Ports;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 	// Arduino
@@ -21,8 +22,13 @@ public class Player : MonoBehaviour {
 	public bool up = true;
 	public bool down = true;
 
+	// Score
+
+	int playerScore = 0;
+	public GameObject scoreText;
+
 	// Game Mechanics
-	public int irritationLevel = 0;
+
 
 	// Use this for initialization
 	void Start () {
@@ -35,10 +41,17 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		arduW = false;
-		arduS = false;
+		//Score
+
+		playerScore++;
+		Text sText = scoreText.GetComponent<Text>();
+		sText.text = "Score : " + playerScore;
 
 
+
+		
+
+		//Arduino
 
 		if(sp.IsOpen)
 		{
@@ -54,10 +67,13 @@ public class Player : MonoBehaviour {
 	
 		float movment = 10f * Time.deltaTime;
 
-		Debug.Log (irritationLevel);
+
 
 		//Movement keys
 
+		arduW = false;
+		arduS = false;
+		
 		if((Input.GetKey (KeyCode.W) || arduW == true) && up == true)
 		{
 			transform.position += new Vector3(0f, movment, 0f);
@@ -92,7 +108,8 @@ public class Player : MonoBehaviour {
 	}
 
 	public void IncreaseLevel(){
-		irritationLevel++;
+		Debug.Log("Avs");
+		sp.Write("Reduce");
 	}
 
 	void Arduino(int ArduInput)

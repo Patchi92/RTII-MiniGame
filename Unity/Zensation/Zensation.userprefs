@@ -1,9 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Test\Player.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\enemySpawn.cs">
     <Files>
-      <File FileName="Assets\Test\Player.cs" Line="32" Column="25" />
-      <File FileName="Assets\Test\Wall.cs" Line="23" Column="4" />
+      <File FileName="Assets\enemySpawn.cs" Line="34" Column="17" />
+      <File FileName="Assets\Test\Background.cs" Line="38" Column="91" />
+      <File FileName="Assets\AirRunner.cs" Line="6" Column="15" />
+      <File FileName="Assets\GroundUnite.cs" Line="40" Column="5" />
+      <File FileName="Assets\Test\Enemy.cs" Line="42" Column="43" />
+      <File FileName="Assets\bullet.cs" Line="14" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

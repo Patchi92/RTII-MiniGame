@@ -4,7 +4,7 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
 
 	public GameObject Player;
-	
+	public GameObject Spawn;
 	public Sprite daySprite;
 	public Sprite nightSprite;
 	
@@ -31,5 +31,15 @@ public class Enemy : MonoBehaviour {
 			Player playerScript = other.gameObject.GetComponent<Player>();
 			playerScript.IncreaseLevel();
 		}
+
+		if (other.gameObject.tag == "SpawnEnd")
+		{
+			Destroy(this.gameObject);
+		}
+	}
+
+	void OnDestroy() {
+		Spawn = GameObject.FindWithTag("Spawn");
+		Spawn.GetComponent<enemySpawn>().enemyLeft();
 	}
 }

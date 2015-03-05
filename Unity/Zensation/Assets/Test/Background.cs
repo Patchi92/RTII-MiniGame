@@ -20,7 +20,7 @@ public class Background : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		float speed = 10f * Time.deltaTime;
+		float speed = 5f * Time.deltaTime;
 
 		transform.position -= new Vector3(speed, 0f, 0f);
 
