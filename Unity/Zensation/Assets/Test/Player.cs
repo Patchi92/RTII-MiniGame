@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
 
 	//Movement
 
+	float movment = 20f;
 	public bool up = true;
 	public bool down = true;
 
@@ -32,8 +33,8 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		sp.Open();
-		sp.ReadTimeout = 1;
+
+		OpenArduino();
 
 		sp.Write("GameStart");
 	}
@@ -65,23 +66,22 @@ public class Player : MonoBehaviour {
 			}
 		}
 	
-		float movment = 10f * Time.deltaTime;
-
+	
 
 
 		//Movement keys
-
-		arduW = false;
-		arduS = false;
 		
+
 		if((Input.GetKey (KeyCode.W) || arduW == true) && up == true)
 		{
-			transform.position += new Vector3(0f, movment, 0f);
+			transform.position += new Vector3(0f, movment, 0f) * Time.deltaTime;
+			arduW = false;
 		}
 		
 		if((Input.GetKey (KeyCode.S) || arduS == true) && down == true)
 		{
-			transform.position -= new Vector3(0f, movment, 0f);
+			transform.position -= new Vector3(0f, movment, 0f) * Time.deltaTime;
+			arduS = false;
 		}
 		
 
@@ -115,22 +115,24 @@ public class Player : MonoBehaviour {
 	void Arduino(int ArduInput)
 	{
 		//Movement
-		
+
+		// Up
+
 		if(ArduInput == 1)
 		{
 			arduW = true;
 			Debug.Log("W");
-		}else {
-			arduW = false;
 		}
+
+		// Down
 
 		if(ArduInput == 2)
 		{
 			arduS = true;
 			Debug.Log("S");
-		}else {
-			arduS = false;
 		}
+
+		// Day Time
 
 		if(ArduInput == 3)
 		{
@@ -138,10 +140,54 @@ public class Player : MonoBehaviour {
 			Debug.Log("Q");
 		}
 
+		// Night time
+
 		if(ArduInput == 4)
 		{
 			cycle = false;
 			Debug.Log("Q");
 		}
+
+		// Game Over
+
+		if(ArduInput == 5)
+		{
+			Application.LoadLevel("End");
+		}
+	}
+
+	void OpenArduino()
+	{
+
+		if (sp != null) 
+		{
+			if (sp.IsOpen) 
+			{
+				sp.Close();
+				print("Closing port, because it was already open!");
+			}
+			else 
+			{
+				sp.Open();  // opens the connection
+				sp.ReadTimeout = 1;  // sets the timeout value before reporting error
+				print("Port Opened!");
+			}
+		}
+		else 
+		{
+			if (sp.IsOpen)
+			{
+				print("Port is already open");
+			}
+			else 
+			{
+				print("Port == null");
+			}
+		}
+	}
+
+	void OnApplicationQuit() 
+	{
+		sp.Close();
 	}
 }

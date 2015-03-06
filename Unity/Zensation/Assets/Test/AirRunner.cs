@@ -43,4 +43,6 @@ public class AirRunner : Enemy {
 
 		transform.position -= new Vector3(speed, fly, 0f) * Time.deltaTime;
 	}
+
+
 }

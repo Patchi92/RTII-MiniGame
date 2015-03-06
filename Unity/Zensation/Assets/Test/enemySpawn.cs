@@ -18,7 +18,7 @@ public class enemySpawn : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if(enemyCount < 4)
+		if(enemyCount < 4 )
 		{
 			Spawn();
 		}
@@ -34,15 +34,16 @@ public class enemySpawn : MonoBehaviour {
 	void Spawn () {
 
 		enemyCount++;
-		int randomEnemy = Random.Range(1,3);
+		int randomEnemy = Random.Range(1,4);
 
-		if(randomEnemy == 1)
+		if(randomEnemy == 1 || randomEnemy == 2)
 		{
 			Vector3 position = new Vector3(525f, Random.Range(-495f, -505f), 0f);
 			GameObject AirEnemy = Instantiate(Air, position, Quaternion.identity) as GameObject;
 		}
 
-		if(randomEnemy == 2)
+
+		if(randomEnemy == 3)
 		{
 			Vector3 position = new Vector3(525f, -508f, 0);
 			GameObject GroundEnemy = Instantiate(Ground, position, Quaternion.identity) as GameObject;
