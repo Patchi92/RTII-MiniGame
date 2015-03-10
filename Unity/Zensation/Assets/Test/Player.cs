@@ -72,16 +72,16 @@ public class Player : MonoBehaviour {
 		//Movement keys
 		
 
-		if((Input.GetKey (KeyCode.W) || arduW == true) && up == true)
+		if(Input.GetKey (KeyCode.W) && up == true)
 		{
 			transform.position += new Vector3(0f, movment, 0f) * Time.deltaTime;
-			arduW = false;
+
 		}
 		
-		if((Input.GetKey (KeyCode.S) || arduS == true) && down == true)
+		if(Input.GetKey (KeyCode.S) && down == true)
 		{
 			transform.position -= new Vector3(0f, movment, 0f) * Time.deltaTime;
-			arduS = false;
+
 		}
 		
 
@@ -118,17 +118,17 @@ public class Player : MonoBehaviour {
 
 		// Up
 
-		if(ArduInput == 1)
+			if(ArduInput == 1 && up == true)
 		{
-			arduW = true;
+			transform.position += new Vector3(0f, movment, 0f) * Time.deltaTime;
 			Debug.Log("W");
 		}
 
 		// Down
 
-		if(ArduInput == 2)
+			if(ArduInput == 2 && down == true)
 		{
-			arduS = true;
+			transform.position -= new Vector3(0f, movment, 0f) * Time.deltaTime;
 			Debug.Log("S");
 		}
 
