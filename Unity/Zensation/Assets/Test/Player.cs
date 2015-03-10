@@ -19,9 +19,10 @@ public class Player : MonoBehaviour {
 
 	//Movement
 
-	float movment = 20f;
+	float movment = 25f;
 	public bool up = true;
 	public bool down = true;
+	float stopCD = 0;
 
 	// Score
 
@@ -50,7 +51,13 @@ public class Player : MonoBehaviour {
 
 
 
-		
+
+
+
+		arduS = false;
+		arduW = false;
+
+
 
 		//Arduino
 
@@ -83,7 +90,22 @@ public class Player : MonoBehaviour {
 			transform.position -= new Vector3(0f, movment, 0f) * Time.deltaTime;
 
 		}
-		
+
+
+
+
+		if(arduW == true && up == true)
+		{
+			transform.position += new Vector3(0f, movment, 0f) * Time.deltaTime;
+			Debug.Log("W");
+		}
+
+		if(arduS == true && down == true)
+		{
+			transform.position -= new Vector3(0f, movment, 0f) * Time.deltaTime;
+			Debug.Log("S");
+		}
+
 
 
 		//Switch
@@ -120,17 +142,18 @@ public class Player : MonoBehaviour {
 
 			if(ArduInput == 1 && up == true)
 		{
-			transform.position += new Vector3(0f, movment, 0f) * Time.deltaTime;
-			Debug.Log("W");
-		}
+			arduW = true;
+		} 
 
 		// Down
 
 			if(ArduInput == 2 && down == true)
 		{
-			transform.position -= new Vector3(0f, movment, 0f) * Time.deltaTime;
-			Debug.Log("S");
-		}
+			arduS = true;
+		} 
+
+
+	
 
 		// Day Time
 
@@ -152,7 +175,7 @@ public class Player : MonoBehaviour {
 
 		if(ArduInput == 5)
 		{
-			Application.LoadLevel("End");
+			//Application.LoadLevel("End");
 		}
 	}
 

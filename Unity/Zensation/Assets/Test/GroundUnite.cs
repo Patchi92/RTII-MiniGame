@@ -29,7 +29,7 @@ public class GroundUnite : Enemy {
 			if(fire){
 
 				Rigidbody2D Bullet = Instantiate(bullet, transform.position, Quaternion.identity) as Rigidbody2D;
-				CD = Time.time + 2f;
+				CD = Time.time + 4f;
 				fire = false;
 
 			}

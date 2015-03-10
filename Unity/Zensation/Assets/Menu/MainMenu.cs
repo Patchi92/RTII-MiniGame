@@ -9,7 +9,27 @@ public class MainMenu : MonoBehaviour {
 	void Start () {
 		
 		OpenArduino();
+		Screen.showCursor = true;
 	
+	}
+
+
+	void Update () {
+
+		//Arduino
+		
+		if(sp.IsOpen)
+		{
+			try
+			{
+				Arduino(sp.ReadByte());
+			}
+			catch
+			{
+				
+			}
+		}
+
 	}
 
 	public void ChangeToScene (string nameOfScene) {
@@ -24,10 +44,10 @@ public class MainMenu : MonoBehaviour {
 	{
 		if(ArduInput == 1)
 		{
+			Debug.Log("Test");
 			Application.LoadLevel("Test");
 		}
-		
-		// Down
+
 		
 		if(ArduInput == 2)
 		{
