@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour {
 	void Start () {
 		
 		OpenArduino();
-		Screen.showCursor = true;
+		Cursor.visible = true;
 	
 	}
 

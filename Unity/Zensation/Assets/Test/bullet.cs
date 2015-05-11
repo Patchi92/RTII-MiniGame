@@ -11,7 +11,7 @@ public class bullet : MonoBehaviour {
 
 		Player = GameObject.FindWithTag("Player");
 		Vector2 direction = Player.transform.position - transform.position;
-		this.rigidbody2D.velocity = direction * speed;
+		this.GetComponent<Rigidbody2D>().velocity = direction * speed;
 
 
 

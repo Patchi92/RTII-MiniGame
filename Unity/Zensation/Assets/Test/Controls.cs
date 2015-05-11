@@ -6,7 +6,7 @@ public class Controls : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Screen.showCursor = false;
+		Cursor.visible = false;
 	}
 	
 	// Update is called once per frame
@@ -26,12 +26,12 @@ public class Controls : MonoBehaviour {
 
 	void resumeGame(){
 		Time.timeScale = 1F;
-		Screen.showCursor = false;
+		Cursor.visible = false;
 	}
 
 	void pauseGame(){
 		Time.timeScale = 0F;
-		Screen.showCursor = true;
+		Cursor.visible = true;
 	}
 
 

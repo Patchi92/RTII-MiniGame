@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
 
 		OpenArduino();
 
-		sp.Write("GameStart");
+		sp.Write("6");
 	}
 
 	// Update is called once per frame
