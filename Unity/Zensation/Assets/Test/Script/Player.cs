@@ -167,6 +167,7 @@ public class Player : MonoBehaviour {
 
 	public void IncreaseLevel(){
 		playerScore = playerScore - 100;
+		GetComponent<AudioSource>().Play();
 	}
 
 	void Arduino(int ArduInput)

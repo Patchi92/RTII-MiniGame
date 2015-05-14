@@ -44,14 +44,13 @@ public class MainMenu : MonoBehaviour {
 	{
 		if(ArduInput == 2)
 		{
-			Debug.Log("Test");
-			Application.LoadLevel("Test");
+			//Application.LoadLevel("Test");
 		}
 
 		
 		if(ArduInput == 1)
 		{
-			Application.Quit();
+			//Application.Quit();
 		}
 	}
 
