@@ -46,8 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\End\FinalScore.cs" />
-     <Compile Include="Assets\FinalScoreText.cs" />
      <Compile Include="Assets\Menu\MainMenu.cs" />
      <Compile Include="Assets\Test\Script\AirRunner.cs" />
      <Compile Include="Assets\Test\Script\Background.cs" />

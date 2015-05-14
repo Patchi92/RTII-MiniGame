@@ -38,6 +38,7 @@ public class Player : MonoBehaviour {
 	float timer;
 	public GameObject timetell;
 
+
 	// Use this for initialization
 	void Start () {
 
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour {
 		sp.Write("Begin");
 
 		playerScore = 0;
+
 
 
 	}
@@ -65,7 +67,8 @@ public class Player : MonoBehaviour {
 		scoreText.transform.position = new Vector3(Screen.width/10 * 1,Screen.height/10 * 9,0);
 
 
-		timer = Time.time;
+		timer = Time.timeSinceLevelLoad;
+
 
 		Text sTime = timetell.GetComponent<Text>();
 		sTime.text = "Time: " + (int)timer;
@@ -154,15 +157,11 @@ public class Player : MonoBehaviour {
 
 
 
-		if((int)Time.time == 60)
+		if((int)timer == 60)
 			GameOver();
 
 
-		if(Input.GetKeyDown (KeyCode.L))
-		{
-			
-			GameOver();
-		}
+
 
 	}
 
