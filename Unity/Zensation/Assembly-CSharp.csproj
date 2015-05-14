@@ -46,16 +46,21 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\End\FinalScore.cs" />
+     <Compile Include="Assets\FinalScoreText.cs" />
      <Compile Include="Assets\Menu\MainMenu.cs" />
-     <Compile Include="Assets\Test\AirRunner.cs" />
-     <Compile Include="Assets\Test\Background.cs" />
-     <Compile Include="Assets\Test\Controls.cs" />
-     <Compile Include="Assets\Test\Enemy.cs" />
-     <Compile Include="Assets\Test\GroundUnite.cs" />
-     <Compile Include="Assets\Test\Player.cs" />
-     <Compile Include="Assets\Test\Wall.cs" />
-     <Compile Include="Assets\Test\bullet.cs" />
-     <Compile Include="Assets\Test\enemySpawn.cs" />
+     <Compile Include="Assets\Test\Script\AirRunner.cs" />
+     <Compile Include="Assets\Test\Script\Background.cs" />
+     <Compile Include="Assets\Test\Script\Controls.cs" />
+     <Compile Include="Assets\Test\Script\Enemy.cs" />
+     <Compile Include="Assets\Test\Script\Flash.cs" />
+     <Compile Include="Assets\Test\Script\Gate.cs" />
+     <Compile Include="Assets\Test\Script\GateControl.cs" />
+     <Compile Include="Assets\Test\Script\GroundUnite.cs" />
+     <Compile Include="Assets\Test\Script\Player.cs" />
+     <Compile Include="Assets\Test\Script\Wall.cs" />
+     <Compile Include="Assets\Test\Script\bullet.cs" />
+     <Compile Include="Assets\Test\Script\enemySpawn.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -4,7 +4,7 @@ using System.IO.Ports;
 
 public class MainMenu : MonoBehaviour {
 
-	SerialPort sp = new SerialPort("COM4", 9600);
+	SerialPort sp = new SerialPort("COM5", 9600);
 
 	void Start () {
 		
@@ -42,14 +42,14 @@ public class MainMenu : MonoBehaviour {
 
 	void Arduino(int ArduInput)
 	{
-		if(ArduInput == 1)
+		if(ArduInput == 2)
 		{
 			Debug.Log("Test");
 			Application.LoadLevel("Test");
 		}
 
 		
-		if(ArduInput == 2)
+		if(ArduInput == 1)
 		{
 			Application.Quit();
 		}
